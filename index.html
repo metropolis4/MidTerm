@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Midterm Project</title>
+
+        <link rel="stylesheet" href="node_modules/semantic-ui/dist/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        
+        <!-- Create New Schedule Modal -->            
+                    <!-- List of available volunteers to appear inside Create New Schedule Modal -->
+                    <div class="column volunteer-checkboxes hiding">
+                        <div class="ui segment"><b class="ui top attached label age-range">Infants</b>
+                            <ul>
+                                <li class="ui toggle checkbox vol-list-item hiding">
+                                    <input type="checkbox">
+                                    <label class="name">Test Person</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+        
+        <div class="ui modal" id="create-schedule">
+            <i class="close icon"></i>
+            <div class="ui header">New Schedule</div>
+            <div class="content">
+                <form class='ui form'>
+                    <div class="fields">
+                        <div class="field">
+                            <p>Date</p>
+                            <div class="three fields">
+                                <div class="two wide field">
+                                    <input type="text" id="month" placeholder="MM">
+                                </div>
+                                <div class="two wide field">
+                                    <input type="text" id="day" placeholder="DD">
+                                </div>
+                                <div class="three wide field">
+                                    <input type="text" id="year" placeholder="YYYY">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="ui three column grid" id="pick-volunteers">
+                <!-- List of Available Volunteers from  -->
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui large positive animated button">
+                    <div class="visible content" id="submit-new-sch">Submit</div> 
+                    <div class="hidden content"><i class="checkmark icon"></i></div>
+                </div>
+            </div>
+        </div>
+
+            
+        <!-- List of All Volunteers Modal -->
+                <!-- Template for each volunteer in the list -->
+                    <tr class="table-volunteer hiding">
+                        <td class="table-name"></td>
+                        <td class="table-phone"></td>
+                        <td class="table-email EMAIL"></td>
+                        <td class="table-lead"></td>
+                        <td class="table-bckcheck"></td>
+                        <td class="table-ages"></td>
+                    </tr>
+
+        <!-- Pre-Populated DOM -->
+        <div class="ui modal" id="all-volunteers">
+            <i class="close icon"></i>
+            <table class="ui table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Lead</th>
+                        <th>Background Check</th>
+                        <th>Ages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- TEMPLATE GOES HERE -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Create New Volunteer Modal -->
+        <div class="ui modal" id="new-volunteer">
+            <i class="close icon"></i>
+            form
+        </div>
+
+        <!-- Create New Substitute Modal -->
+        <div class="ui modal" id="new-substitute">
+            <i class="close icon"></i>
+            form
+        </div>
+
+        <!-- Main Page Content -->
+
+        <div class="ui raised orange segment" id="page">
+
+            <!-- Main Menu -->
+            <div class="ui pointing vertical inverted orange menu" id="main-menu">
+                <a href="#" class="item">Vol.Org</a>
+                <div class="menu">
+                    <a class="item" id="newSch"><strong>Create New Schedule</strong></a>
+                </div>
+                <div class="item">
+                    <strong>Volunters</strong>
+                    <div class="menu">
+                        <a class="item" id="allV">All Volunteers</a>
+                        <a class="item" id="newV">Add new Volunteer</a>
+                        <a class="item" id="newS">Add new Substitute</a>
+                    </div>
+                </div>
+                <div class="ui left pointing dropdown link item">
+                    Month <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item">March</div>
+                        <div class="item">April</div>
+                        <div class="item">May</div>
+                        <div class="item">June</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Schedule -->
+            <div  id="schedule">
+                <div class="ui huge header centered" id="month"></div>
+                <div class="ui divider"></div>
+                <div class="ui styled fluid accordion scheduled-date">
+
+                    <h3 class="title">March 5 <i class="dropdown icon"></i></h3>
+                    <div class="content">
+                        <h2>Schedule</h2>
+                        <div class="ui three column grid">
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="inf">Infants</b>
+                                    <ul>
+                                        <li>Court Rich</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="18mo">12-18month</b>
+                                    <ul>
+                                        <li>Maggie Smith</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="24mo">18-24month</b>
+                                    <ul>
+                                        <li>Peggie Sue</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="3yr">2-3yr</b>
+                                    <ul>
+                                        <li>Grissella Grimm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="4yr">3-4yr</b>
+                                    <ul>
+                                        <li>Eleanor Rigby</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="5yr">4-5yr</b>
+                                    <ul>
+                                        <li>Alice Carrol</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="title">March 12 <i class="dropdown icon"></i></h3>
+                    <div class="content">
+                        <h2>Schedule</h2>
+                        <div class="ui three column grid">
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="inf">Infants</b>
+                                    <ul>
+                                        <li>Court Rich</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="18mo">12-18month</b>
+                                    <ul>
+                                        <li>Maggie Smith</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="24mo">18-24month</b>
+                                    <ul>
+                                        <li>Peggie Sue</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="3yr">2-3yr</b>
+                                    <ul>
+                                        <li>Grissella Grimm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="4yr">3-4yr</b>
+                                    <ul>
+                                        <li>Eleanor Rigby</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="5yr">4-5yr</b>
+                                    <ul>
+                                        <li>Alice Carrol</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="title">March 19 <i class="dropdown icon"></i></h3>
+                    <div class="content">
+                        <h2>Schedule</h2>
+                        <div class="ui three column grid">
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="inf">Infants</b>
+                                    <ul>
+                                        <li>Court Rich</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="18mo">12-18month</b>
+                                    <ul>
+                                        <li>Maggie Smith</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="24mo">18-24month</b>
+                                    <ul>
+                                        <li>Peggie Sue</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="3yr">2-3yr</b>
+                                    <ul>
+                                        <li>Grissella Grimm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="4yr">3-4yr</b>
+                                    <ul>
+                                        <li>Eleanor Rigby</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="5yr">4-5yr</b>
+                                    <ul>
+                                        <li>Alice Carrol</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="title">March 26 <i class="dropdown icon"></i></h3>
+                    <div class="content">
+                        <h2>Schedule</h2>
+                        <div class="ui three column grid">
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="inf">Infants</b>
+                                    <ul>
+                                        <li>Court Rich</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="18mo">12-18month</b>
+                                    <ul>
+                                        <li>Maggie Smith</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="24mo">18-24month</b>
+                                    <ul>
+                                        <li>Peggie Sue</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="3yr">2-3yr</b>
+                                    <ul>
+                                        <li>Grissella Grimm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="4yr">3-4yr</b>
+                                    <ul>
+                                        <li>Eleanor Rigby</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui segment"><b class="ui top attached label" id="5yr">4-5yr</b>
+                                    <ul>
+                                        <li>Alice Carrol</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>       
+        
+            
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+        <script src="node_modules/semantic-ui/dist/semantic.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+        <script src="main.js"></script>
+
+  </body>
+</html>

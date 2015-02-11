@@ -1,0 +1,29 @@
+
+
+Functionality:
+  ✔ Include a list of all dates as an accordion @done (15-02-11 15:33)
+  ☐ User can click on any date to show a list of all volunteers scheduled for that date grouped by classroom/age group
+  ☐ If a substitute is needed, click on the person a sub is needed for and a list of possible substitutes will populate in a modal
+  ☐ Display contact information and link to automate email to either a specific person, or to all people who teach that group
+  ☐ Create a new schedule for future dates
+
+Future Functionality:
+ ☐ Create user accounts for all volunteers
+ ☐ Volunteers can filter the list of dates to see only dates they are scheduled
+ ☐ Volunteers can search for their own substitutes
+ ☐ Volunteers block out dates they aren't available
+ ☐ Create defaults and templates that can be reused
+
+Components:
+  ✔ Volunteer object with name, phone, email, picture and ages elements @done (15-02-09 16:54)
+  ✔ The volunteer object will include an array of all age groups that volunteer is willing to teach @done (15-02-09 16:54)
+  ✔ Create a substitute sub-class of Volunteer @done (15-02-11 15:34)
+  ☐ An object of each date including the date, an array of age groups, and arrays of all volunteers nested inside the age groups
+  ☐ Main Page:
+    ✔ Create new schedule button @done (15-02-11 15:34)
+      ☐ Date
+      ✔ Categories @done (15-02-11 15:34)
+      ✔ Volunteers @done (15-02-11 15:34)
+      ☐ Copy or save template for iteration? Default schedule?
+    ✔ Create new volunteer button (and new substitute) @done (15-02-11 15:35)
+    ✔ Select Month button @done (15-02-11 15:35)
