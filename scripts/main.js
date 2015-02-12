@@ -78,9 +78,9 @@ var populateAllVolunteers = function(array){
     });
 };
 
-var populateAges = function(element){
+var populateAges = function(){
     return _.map(sortVolunteers(Volunteer.volunteers), function(val, key){
-        var $el = $(element).first().clone();
+        var $el = $('.age-classes').first().clone();
         $el.removeClass('hiding');
         $el.find('label').text(key);
         return $el;
@@ -141,14 +141,14 @@ $(document).on('ready', function() {
     
 
     $('#newV').on('click', function(){
-        $('.age-classes-vol').find('label').empty();
-        $('.age-classes-vol').after(populateAges('.age-classes-vol'));
+        $('.age-classes-vol').empty();
+        $('.age-classes-vol').append(populateAges());
         $('.ui.checkbox').checkbox();
         $('#new-volunteer').modal('setting', 'transition', 'horizontal flip').modal('show');
     });
     $('#newS').on('click', function(){
-        $('.age-classes-sub').find('label').empty();
-        $('.age-classes-sub').after(populateAges('.age-classes-sub'));
+        $('.age-classes-sub').empty();
+        $('.age-classes-sub').append(populateAges());
         $('.ui.checkbox').checkbox();
         $('#new-substitute').modal('setting', 'transition', 'horizontal flip').modal('show');
     });
