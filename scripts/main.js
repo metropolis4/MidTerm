@@ -103,6 +103,11 @@ var populateAges = function(){
     });
 };
 
+var findSub = function(){
+
+    var ages = $('.scheduld-ages');
+};
+
 // Create Demo Volunteer List
 // Infants, 12-18 month, 18-24month, 2-3yrs, 3-4yrs, 4-5yrs
 var matilda = new Volunteer('Matilda', 'Rich', '123-456-7890', 'Matilda@email.com', ['infants'], 'no', 'yes');
@@ -154,7 +159,6 @@ $(document).on('ready', function() {
         $('#all-substitutes').find('tbody').append(populateAllVolunteers(Sub.volunteers));
         $('#all-substitutes').modal('setting', 'transition', 'horizontal flip').modal('show');  
     });
-    
 
     $('#newV').on('click', function(){
         $('.age-classes-vol').empty();
@@ -162,10 +166,15 @@ $(document).on('ready', function() {
         $('.ui.checkbox').checkbox();
         $('#new-volunteer').modal('setting', 'transition', 'horizontal flip').modal('show');
     });
+
     $('#newS').on('click', function(){
         $('.age-classes-sub').empty();
         $('.age-classes-sub').append(populateAges());
         $('.ui.checkbox').checkbox();
         $('#new-substitute').modal('setting', 'transition', 'horizontal flip').modal('show');
+    });
+
+    $('#schedule').on('click', '.sub-needed', function(){
+        console.log($(this).closest('.find-sub-segment').find('.scheduled-ages').first().text());
     });
 });
