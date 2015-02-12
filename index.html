@@ -12,11 +12,11 @@
         <!-- Create New Schedule Modal -->            
                     <!-- List of available volunteers to appear inside Create New Schedule Modal -->
                     <div class="column volunteer-checkboxes hiding">
-                        <div class="ui segment"><b class="ui top attached label age-range">Infants</b>
+                        <div class="ui segment"><b class="ui top attached label age-range"></b>
                             <ul>
                                 <li class="ui toggle checkbox vol-list-item hiding">
                                     <input type="checkbox">
-                                    <label class="name">Test Person</label>
+                                    <label class="name"></label>
                                 </li>
                             </ul>
                         </div>
@@ -77,17 +77,144 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- All Substitutes Modal -->
         
-        <!-- Create New Volunteer Modal -->
-        <div class="ui modal" id="new-volunteer">
+        <div class="ui modal" id="all-substitutes">
             <i class="close icon"></i>
-            form
+            <table class="ui table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Lead</th>
+                        <th>Background Check</th>
+                        <th>Ages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- TEMPLATE GOES HERE -->
+                </tbody>
+            </table>
         </div>
 
-        <!-- Create New Substitute Modal -->
-        <div class="ui modal" id="new-substitute">
+        <!-- Create New Volunteer Modal -->
+        <div class="ui small modal" id="new-volunteer">
             <i class="close icon"></i>
-            form
+            <div class="ui header">Add Volunteer</div>
+            <div class="ui form content">
+                <div class="field">
+                    <label>Name</label>
+                    <div class="two fields">
+                        <div class="six wide field">
+                            <input type="text" name="first-name" placeholder="first">
+                        </div>
+                        <div class="six wide field">
+                            <input type="text" name="last-name" placeholder="last">
+                        </div>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Phone</label>
+                        <input type="tel" name="phone" placeholder="xxx-xxx-xxxx">
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="you@email.com">
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="three wide field">
+                        <div class="ui toggle checkbox">
+                            <input type="checkbox">
+                            <label>Lead</label>
+                        </div>
+                    </div>
+                    <div class="three wide field">
+                        <div class="ui toggle checkbox">
+                            <input type="checkbox">
+                            <label>Background Check</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui divider"></div>
+                    <!-- TEMPLATE -->
+                    <!-- <div class="field age-classes-vol hiding">
+                        <div class="ui toggle checkbox column">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </div> -->
+                    <!-- ELEMENTS DYNAMICALLY CREATED HERE -->
+            </div>
+            <div class="actions">
+                <div class="ui large positive animated button">
+                    <div class="visible content" id="submit-new-vol">Submit</div> 
+                    <div class="hidden content"><i class="checkmark icon"></i></div>
+                </div>
+            </div>
+        </div>
+
+<!-- TEMPLATE -->
+
+        <!-- Create New Substitute Modal -->
+        <div class="ui small modal" id="new-substitute">
+            <i class="close icon"></i>
+            <div class="ui header">Add Substitute</div>
+            <div class="ui form content">
+                <div class="field">
+                    <label>Name</label>
+                    <div class="two fields">
+                        <div class="six wide field">
+                            <input type="text" name="first-name" placeholder="first">
+                        </div>
+                        <div class="six wide field">
+                            <input type="text" name="last-name" placeholder="last">
+                        </div>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label>Phone</label>
+                        <input type="tel" name="phone" placeholder="xxx-xxx-xxxx">
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="you@email.com">
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="three wide field">
+                        <div class="ui toggle checkbox">
+                            <input type="checkbox">
+                            <label>Lead</label>
+                        </div>
+                    </div>
+                    <div class="three wide field">
+                        <div class="ui toggle checkbox">
+                            <input type="checkbox">
+                            <label>Background Check</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui divider"></div>
+                    <!-- TEMPLATE -->
+                    <!-- <div class="field age-classes-sub hiding">
+                        <div class="ui toggle checkbox column">
+                            <input type="checkbox">
+                            <label></label>
+                        </div>
+                    </div> -->
+                    <!-- ELEMENTS DYNAMICALLY CREATED HERE -->
+            </div>
+            <div class="actions">
+                <div class="ui large positive animated button">
+                    <div class="visible content" id="submit-new-vol">Submit</div> 
+                    <div class="hidden content"><i class="checkmark icon"></i></div>
+                </div>
+            </div>
         </div>
 
         <!-- Main Page Content -->
@@ -104,6 +231,7 @@
                     <strong>Volunters</strong>
                     <div class="menu">
                         <a class="item" id="allV">All Volunteers</a>
+                        <a class="item" id="allS">All Substitutes</a>
                         <a class="item" id="newV">Add new Volunteer</a>
                         <a class="item" id="newS">Add new Substitute</a>
                     </div>
@@ -119,12 +247,7 @@
                 </div>
             </div>
 
-            <!-- Monthly Schedule -->
-                    <!-- MODAL FOR SUBSTITUTES -->
-                    <div class="ui modal" id="find-sub">
-                        
-                    </div>
-
+            <!-- Pre-Populated Monthly Schedule -->
             <div  id="schedule">
                 <div class="ui huge header centered" id="month">March</div>
                 <div class="ui divider"></div>
@@ -139,9 +262,11 @@
                                     <ul class="ui list">
                                         <a class="item pop-vol pop-vol">Court Rich</a>
                                         <div class="ui popup">
-                                            <div class="header">Sub needed?</div>
-                                            <div class="ui right labeled icon positive button">
-                                                <i class="right arrow icon"></i>Yes
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </ul>
@@ -152,9 +277,11 @@
                                     <ul class="ui list">
                                         <a class="item pop-vol">Maggie Smith</a>
                                         <div class="ui popup">
-                                            <div class="header">Sub needed?</div>
-                                            <div class="ui right labeled icon positive button">
-                                                <i class="right arrow icon"></i>Yes
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </ul>
@@ -165,9 +292,11 @@
                                     <ul class="ui list">
                                         <a class="item pop-vol">Peggie Sue</a>
                                         <div class="ui popup">
-                                            <div class="header">Sub needed?</div>
-                                            <div class="ui right labeled icon positive button">
-                                                <i class="right arrow icon"></i>Yes
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </ul>
@@ -178,9 +307,11 @@
                                     <ul class="ui list">
                                         <a class="item pop-vol">Grissella Grimm</a>
                                         <div class="ui popup">
-                                            <div class="header">Sub needed?</div>
-                                            <div class="ui right labeled icon positive button">
-                                                <i class="right arrow icon"></i>Yes
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </ul>
@@ -191,9 +322,11 @@
                                     <ul class="ui list">
                                         <a class="item pop-vol">Eleanor Rigby</a>
                                         <div class="ui popup">
-                                            <div class="header">Sub needed?</div>
-                                            <div class="ui right labeled icon positive button">
-                                                <i class="right arrow icon"></i>Yes
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </ul>
@@ -204,9 +337,11 @@
                                     <ul class="ui list">
                                         <a class="item pop-vol">Alice Carrol</a>
                                         <div class="ui popup">
-                                            <div class="header">Sub needed?</div>
-                                            <div class="ui right labeled icon positive button">
-                                                <i class="right arrow icon"></i>Yes
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </ul>
@@ -222,42 +357,90 @@
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="inf">Infants</b>
                                     <ul class="ui list">
-                                        <a class="item">Court Rich</a>
+                                        <a class="item pop-vol pop-vol">Court Rich</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="18mo">12-18month</b>
                                     <ul class="ui list">
-                                        <a class="item">Maggie Smith</a>
+                                        <a class="item pop-vol">Maggie Smith</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="24mo">18-24month</b>
                                     <ul class="ui list">
-                                        <a class="item">Peggie Sue</a>
+                                        <a class="item pop-vol">Peggie Sue</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="3yr">2-3yr</b>
                                     <ul class="ui list">
-                                        <a class="item">Grissella Grimm</a>
+                                        <a class="item pop-vol">Grissella Grimm</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="4yr">3-4yr</b>
                                     <ul class="ui list">
-                                        <a class="item">Eleanor Rigby</a>
+                                        <a class="item pop-vol">Eleanor Rigby</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="5yr">4-5yr</b>
                                     <ul class="ui list">
-                                        <a class="item">Alice Carrol</a>
+                                        <a class="item pop-vol">Alice Carrol</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
@@ -271,42 +454,90 @@
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="inf">Infants</b>
                                     <ul class="ui list">
-                                        <a class="item">Court Rich</a>
+                                        <a class="item pop-vol pop-vol">Court Rich</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="18mo">12-18month</b>
                                     <ul class="ui list">
-                                        <a class="item">Maggie Smith</a>
+                                        <a class="item pop-vol">Maggie Smith</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="24mo">18-24month</b>
                                     <ul class="ui list">
-                                        <a class="item">Peggie Sue</a>
+                                        <a class="item pop-vol">Peggie Sue</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="3yr">2-3yr</b>
                                     <ul class="ui list">
-                                        <a class="item">Grissella Grimm</a>
+                                        <a class="item pop-vol">Grissella Grimm</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="4yr">3-4yr</b>
                                     <ul class="ui list">
-                                        <a class="item">Eleanor Rigby</a>
+                                        <a class="item pop-vol">Eleanor Rigby</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="5yr">4-5yr</b>
                                     <ul class="ui list">
-                                        <a class="item">Alice Carrol</a>
+                                        <a class="item pop-vol">Alice Carrol</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
@@ -320,42 +551,90 @@
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="inf">Infants</b>
                                     <ul class="ui list">
-                                        <a class="item">Court Rich</a>
+                                        <a class="item pop-vol pop-vol">Court Rich</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="18mo">12-18month</b>
                                     <ul class="ui list">
-                                        <a class="item">Maggie Smith</a>
+                                        <a class="item pop-vol">Maggie Smith</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="24mo">18-24month</b>
                                     <ul class="ui list">
-                                        <a class="item">Peggie Sue</a>
+                                        <a class="item pop-vol">Peggie Sue</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="3yr">2-3yr</b>
                                     <ul class="ui list">
-                                        <a class="item">Grissella Grimm</a>
+                                        <a class="item pop-vol">Grissella Grimm</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="4yr">3-4yr</b>
                                     <ul class="ui list">
-                                        <a class="item">Eleanor Rigby</a>
+                                        <a class="item pop-vol">Eleanor Rigby</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="ui segment"><b class="ui top attached label scheduled-ages" id="5yr">4-5yr</b>
                                     <ul class="ui list">
-                                        <a class="item">Alice Carrol</a>
+                                        <a class="item pop-vol">Alice Carrol</a>
+                                        <div class="ui popup">
+                                            <div class="ui left pointing dropdown link item">
+                                                Sub Needed? <i class="orange pointing right large icon"></i>
+                                                <div class="menu">
+                                                    <div class="item pop-sub-name"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>

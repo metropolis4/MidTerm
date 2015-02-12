@@ -64,8 +64,8 @@ var populateVolunteersNewSchedule = function(){
     });
 };
 
-var populateAllVolunteers = function(){
-    return _.map(Volunteer.volunteers, function(val){
+var populateAllVolunteers = function(array){
+    return _.map(array, function(val){
         var $el = $('.table-volunteer').first().clone();
         $el.removeClass('hiding');
         $el.find('.table-name').text(val.fullName);
@@ -76,7 +76,15 @@ var populateAllVolunteers = function(){
         $el.find('.table-ages').text(val.ages);
         return $el;
     });
+};
 
+var populateAges = function(element){
+    return _.map(sortVolunteers(Volunteer.volunteers), function(val, key){
+        var $el = $(element).first().clone();
+        $el.removeClass('hiding');
+        $el.find('label').text(key);
+        return $el;
+    });
 };
 
 // Create Demo Volunteer List
@@ -100,9 +108,17 @@ var aurora = new Sub('Aurora', 'Dresden', '123-456-7890', 'aurora@email.com', ['
 var rosey = new Sub('Rosey', 'Cotton', '123-456-7890', 'rosey@mail.com', ['18-24month', 'infants','12-18month'], 'no', 'yes');
 
 $(document).on('ready', function() {
+
+    // Semantic UI Elements
     $('.ui.accordion').accordion();
     $('.ui.dropdown').dropdown();
     $('.ui.checkbox').checkbox();
+    $('.pop-vol').popup({
+        inline: true,
+        on: 'click',
+        transition: 'vertical flip',
+        delay: {show: 350, hide: 350}
+    });
 
     $('#main-menu').on('click', '#newSch', function(){
         $('#pick-volunteers').empty();
@@ -113,19 +129,27 @@ $(document).on('ready', function() {
 
     $('#main-menu').on('click', '#allV', function(){
         $('#all-volunteers').find('tbody').empty();
-        $('#all-volunteers').find('tbody').append(populateAllVolunteers());
+        $('#all-volunteers').find('tbody').append(populateAllVolunteers(Volunteer.volunteers));
         $('#all-volunteers').modal('setting', 'transition', 'horizontal flip').modal('show');  
     });
 
-    $('.pop-vol').popup({
-        inline: true,
-        on: 'click'
+    $('#main-menu').on('click', '#allS', function(){      
+        $('#all-substitutes').find('tbody').empty();
+        $('#all-substitutes').find('tbody').append(populateAllVolunteers(Sub.volunteers));
+        $('#all-substitutes').modal('setting', 'transition', 'horizontal flip').modal('show');  
     });
+    
 
     $('#newV').on('click', function(){
+        $('.age-classes-vol').find('label').empty();
+        $('.age-classes-vol').after(populateAges('.age-classes-vol'));
+        $('.ui.checkbox').checkbox();
         $('#new-volunteer').modal('setting', 'transition', 'horizontal flip').modal('show');
     });
     $('#newS').on('click', function(){
+        $('.age-classes-sub').find('label').empty();
+        $('.age-classes-sub').after(populateAges('.age-classes-sub'));
+        $('.ui.checkbox').checkbox();
         $('#new-substitute').modal('setting', 'transition', 'horizontal flip').modal('show');
     });
 });
