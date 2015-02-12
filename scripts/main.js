@@ -103,9 +103,13 @@ var populateAges = function(){
     });
 };
 
-var findSub = function(){
-
-    var ages = $('.scheduld-ages');
+var findSub = function(age){
+    return _.map(Sub.volunteers, function(val){
+        var $el = $('.pop-sub-name').first().clone();
+        if(_.indexOf(val.ages, age) !== -1){
+            return $el.text(val.fullName);
+        }
+    });
 };
 
 // Create Demo Volunteer List
@@ -160,14 +164,14 @@ $(document).on('ready', function() {
         $('#all-substitutes').modal('setting', 'transition', 'horizontal flip').modal('show');  
     });
 
-    $('#newV').on('click', function(){
+    $('#main-menu').on('click', '#newV', function(){
         $('.age-classes-vol').empty();
         $('.age-classes-vol').append(populateAges());
         $('.ui.checkbox').checkbox();
         $('#new-volunteer').modal('setting', 'transition', 'horizontal flip').modal('show');
     });
 
-    $('#newS').on('click', function(){
+    $('#main-menu').on('click', '#newS', function(){
         $('.age-classes-sub').empty();
         $('.age-classes-sub').append(populateAges());
         $('.ui.checkbox').checkbox();
@@ -175,6 +179,9 @@ $(document).on('ready', function() {
     });
 
     $('#schedule').on('click', '.sub-needed', function(){
-        console.log($(this).closest('.find-sub-segment').find('.scheduled-ages').first().text());
+        var subTargetAge = $(this).closest('.find-sub-segment').find('.scheduled-ages').first().text();
+        var subTargetVol = $(this).closest('.find-sub-segment').find('.pop-vol').first().text();
+        $('.sub-needed').find('.menu').empty();
+        $('.sub-needed').find('.menu').first().prepend(findSub(subTargetAge));
     });
 });
