@@ -182,9 +182,9 @@ $(document).on('ready', function() {
     $('#schedule').on('click', '.sub-needed', function(){
         var subTargetAge = $(this).closest('.find-sub-segment').find('.scheduled-ages').first().text();
         var subTargetVol = $(this).closest('.find-sub-segment').find('.pop-vol').first();
-        $('.sub-needed').find('.menu').empty();
+        $(this).find('.menu').empty();
         $(this).find('.menu').first().prepend(findSub(subTargetAge));
-        $('.sub-needed').on('click', '.pop-sub-name', function(){   
+        $(this).on('click', '.pop-sub-name', function(){   
             subTargetVol.text($(this).text());
         });
     });
