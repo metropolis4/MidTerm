@@ -129,8 +129,9 @@ var alice = new Volunteer('Alice', 'Carrol', '123-456-7890', 'Alice@email.com', 
 
 // Create Demo Substitute List
 var rita = new Sub('Rita', 'Maid', '123-456-7890', 'rita@email.com', ['infants','12-18month'], 'no', 'yes');
-var aurora = new Sub('Aurora', 'Dresden', '123-456-7890', 'aurora@email.com', ['4-5yrs', '3-4yrs', '2-3yrs'], 'no', 'yes');
+var miss = new Sub('Miss', 'Molly', '123-456-7890', 'miss@email.com', ['4-5yrs', '3-4yrs', '2-3yrs'], 'no', 'yes');
 var rosey = new Sub('Rosey', 'Cotton', '123-456-7890', 'rosey@mail.com', ['18-24month', 'infants','12-18month'], 'no', 'yes');
+var bathilda = new Sub('Batilda', 'Bagshot', '123-456-7890', 'bathilda@email.com', ['12-18month', '4-5yrs'], 'no', 'yes');
 
 $(document).on('ready', function() {
 
@@ -180,8 +181,11 @@ $(document).on('ready', function() {
 
     $('#schedule').on('click', '.sub-needed', function(){
         var subTargetAge = $(this).closest('.find-sub-segment').find('.scheduled-ages').first().text();
-        var subTargetVol = $(this).closest('.find-sub-segment').find('.pop-vol').first().text();
+        var subTargetVol = $(this).closest('.find-sub-segment').find('.pop-vol').first();
         $('.sub-needed').find('.menu').empty();
-        $('.sub-needed').find('.menu').first().prepend(findSub(subTargetAge));
+        $(this).find('.menu').first().prepend(findSub(subTargetAge));
+        $('.sub-needed').on('click', '.pop-sub-name', function(){   
+            subTargetVol.text($(this).text());
+        });
     });
 });
