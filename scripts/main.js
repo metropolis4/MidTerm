@@ -1,4 +1,5 @@
 // Volunteer class constructor
+// 
 var Volunteer = function(firstName, lastName, number, email, ages, lead, bckcheck){
     this.firstName = firstName;
     this.lastName = lastName;
@@ -13,9 +14,11 @@ var Volunteer = function(firstName, lastName, number, email, ages, lead, bckchec
     }
 };
 // All volunteers
+// 
 Volunteer.volunteers = [];
 
 // Sub-class for substitutes
+// 
 var Sub = function(firstName, lastName, number, email, ages, lead, bckcheck){
     Volunteer.call(this, firstName, lastName, number, email, ages, lead, bckcheck);
     this.sub = true;
@@ -25,8 +28,21 @@ Sub.prototype = new Volunteer();
 Sub.prototype.constructor = Sub;
 
 // All substitutes
+// 
 Sub.volunteers = [];
 
+// Dates
+// 
+var ScheduleItem = function(date){
+    this.date = date;
+};
+
+ScheduleItem.prototype.newSch = function(){
+    
+};
+
+// Helper Functions
+// 
 var willTeach = function(array, ageGroup) {
     var matches =  _.filter(array, function(val) {
         return _.contains(val.ages, ageGroup);
