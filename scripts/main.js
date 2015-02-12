@@ -51,7 +51,6 @@ var sortVolunteers = function(array){
 };
 
 var populateVolunteersNewSchedule = function(){
-    
     return  _.map(sortVolunteers(Volunteer.volunteers), function(val, key){
         var $el = $('.volunteer-checkboxes').first().clone();
         $el.find('.age-range').text(key);
@@ -63,37 +62,42 @@ var populateVolunteersNewSchedule = function(){
         });
         return $el;
     });
-
 };
 
 var populateAllVolunteers = function(){
     return _.map(Volunteer.volunteers, function(val){
         var $el = $('.table-volunteer').first().clone();
+        $el.removeClass('hiding');
         $el.find('.table-name').text(val.fullName);
-        console.log(val.fullName);
+        $el.find('.table-phone').text(val.number);
+        $el.find('.table-email').children('a').text(val.email);
+        $el.find('.table-lead').text(val.lead);
+        $el.find('.table-bckcheck').text(val.bckcheck);
+        $el.find('.table-ages').text(val.ages);
         return $el;
     });
+
 };
 
 // Create Demo Volunteer List
 // Infants, 12-18 month, 18-24month, 2-3yrs, 3-4yrs, 4-5yrs
-var matilda = new Volunteer('Matilda', 'Rich', '123-456-7890', 'Matilda@email.com', ['infants']);
-var court = new Volunteer('Court', 'Rich', '123-456-7890', 'court@email.com', ['infants']);
-var leia = new Volunteer('Leia', 'Organa', '123-456-7890', 'Leia@email.com', ['12-18month']);
-var maggie = new Volunteer('Maggie', 'Smith', '123-456-7890', 'Maggie@email.com', ['12-18month']);
-var lisa = new Volunteer('Lisa', 'Simpson', '123-456-7890', 'lisa@email.com', ['18-24month']);
-var peggy = new Volunteer('Peggy', 'Sue', '123-456-7890', 'peggy@email.com', ['18-24month']);
-var clarabelle = new Volunteer('Clarabelle', 'Cow', '123-456-7890', 'Clarabelle@email.com', ['2-3yrs']);
-var Grissella = new Volunteer('Grissella', 'Grimm', '123-456-7890', 'Grissella@email.com', ['2-3yrs']);
-var eleanor = new Volunteer('Eleanor', 'Rigby', '123-456-7890', 'Eleanor@email.com', ['3-4yrs']);
-var lizzy = new Volunteer('Lizzy', 'Bennet', '123-456-7890', 'Lizzy@email.com', ['3-4yrs']);
-var maude = new Volunteer('Maude', 'Clark', '123-456-7890', 'Maude@email.com', ['4-5yrs']);
-var alice = new Volunteer('Alice', 'Carrol', '123-456-7890', 'Alice@email.com', ['4-5yrs']);
+var matilda = new Volunteer('Matilda', 'Rich', '123-456-7890', 'Matilda@email.com', ['infants'], 'no', 'yes');
+var court = new Volunteer('Court', 'Rich', '123-456-7890', 'court@email.com', ['infants'], 'yes', 'yes');
+var leia = new Volunteer('Leia', 'Organa', '123-456-7890', 'Leia@email.com', ['12-18month'], 'yes', 'yes');
+var maggie = new Volunteer('Maggie', 'Smith', '123-456-7890', 'Maggie@email.com', ['12-18month'], 'no', 'yes');
+var lisa = new Volunteer('Lisa', 'Simpson', '123-456-7890', 'lisa@email.com', ['18-24month'], 'no', 'yes');
+var peggy = new Volunteer('Peggy', 'Sue', '123-456-7890', 'peggy@email.com', ['18-24month'], 'yes', 'yes');
+var clarabelle = new Volunteer('Clarabelle', 'Cow', '123-456-7890', 'Clarabelle@email.com', ['2-3yrs'], 'no', 'yes');
+var Grissella = new Volunteer('Grissella', 'Grimm', '123-456-7890', 'Grissella@email.com', ['2-3yrs'], 'yes', 'yes');
+var eleanor = new Volunteer('Eleanor', 'Rigby', '123-456-7890', 'Eleanor@email.com', ['3-4yrs'], 'no', 'yes');
+var lizzy = new Volunteer('Lizzy', 'Bennet', '123-456-7890', 'Lizzy@email.com', ['3-4yrs'], 'yes', 'yes');
+var maude = new Volunteer('Maude', 'Clark', '123-456-7890', 'Maude@email.com', ['4-5yrs'], 'no', 'yes');
+var alice = new Volunteer('Alice', 'Carrol', '123-456-7890', 'Alice@email.com', ['4-5yrs'], 'yes', 'yes');
 
 // Create Demo Substitute List
-var rita = new Sub('Rita', 'Maid', '123-456-7890', 'rita@email.com', ['infants','12-18month']);
-var aurora = new Sub('Aurora', 'Dresden', '123-456-7890', 'aurora@email.com', ['4-5yrs', '3-4yrs', '2-3yrs']);
-var rosey = new Sub('Rosey', 'Cotton', '123-456-7890', 'rosey@mail.com', ['18-24month', 'infants','12-18month']);
+var rita = new Sub('Rita', 'Maid', '123-456-7890', 'rita@email.com', ['infants','12-18month'], 'no', 'yes');
+var aurora = new Sub('Aurora', 'Dresden', '123-456-7890', 'aurora@email.com', ['4-5yrs', '3-4yrs', '2-3yrs'], 'no', 'yes');
+var rosey = new Sub('Rosey', 'Cotton', '123-456-7890', 'rosey@mail.com', ['18-24month', 'infants','12-18month'], 'no', 'yes');
 
 $(document).on('ready', function() {
     $('.ui.accordion').accordion();
@@ -107,13 +111,17 @@ $(document).on('ready', function() {
         $('#create-schedule').modal('setting', 'transition', 'horizontal flip').modal('show');
     });
 
-    
-
-    $('#allV').on('click', function(){
+    $('#main-menu').on('click', '#allV', function(){
+        $('#all-volunteers').find('tbody').empty();
         $('#all-volunteers').find('tbody').append(populateAllVolunteers());
-        $('#all-volunteers').modal('setting', 'transition', 'horizontal flip').modal('show');
-        
+        $('#all-volunteers').modal('setting', 'transition', 'horizontal flip').modal('show');  
     });
+
+    $('.pop-vol').popup({
+        inline: true,
+        on: 'click'
+    });
+
     $('#newV').on('click', function(){
         $('#new-volunteer').modal('setting', 'transition', 'horizontal flip').modal('show');
     });

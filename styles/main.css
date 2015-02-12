@@ -30,3 +30,6 @@ div b {
 .hiding, .ui.hiding {
     display: none;
 }
+.table-email a {
+    cursor: pointer;
+}

@@ -5,7 +5,7 @@
         <title>Midterm Project</title>
 
         <link rel="stylesheet" href="node_modules/semantic-ui/dist/semantic.min.css">
-        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" type="text/css" href="styles/main.css">
     </head>
     <body>
         
@@ -27,26 +27,15 @@
             <div class="ui header">New Schedule</div>
             <div class="content">
                 <form class='ui form'>
-                    <div class="fields">
-                        <div class="field">
-                            <p>Date</p>
-                            <div class="three fields">
-                                <div class="two wide field">
-                                    <input type="text" id="month" placeholder="MM">
-                                </div>
-                                <div class="two wide field">
-                                    <input type="text" id="day" placeholder="DD">
-                                </div>
-                                <div class="three wide field">
-                                    <input type="text" id="year" placeholder="YYYY">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="three wide field">
+                        <label>Date</label>
+                        <input type="date">
+                    </div>
+                
+                    <div class="ui three column grid" id="pick-volunteers">
+                    <!-- List of Available Volunteers from  -->
                     </div>
                 </form>
-                <div class="ui three column grid" id="pick-volunteers">
-                <!-- List of Available Volunteers from  -->
-                </div>
             </div>
             <div class="actions">
                 <div class="ui large positive animated button">
@@ -59,15 +48,16 @@
             
         <!-- List of All Volunteers Modal -->
                 <!-- Template for each volunteer in the list -->
-                    <tr class="table-volunteer hiding">
+                    <table>
+                    <tr class="table-volunteer">
                         <td class="table-name"></td>
                         <td class="table-phone"></td>
-                        <td class="table-email EMAIL"></td>
+                        <td class="table-email"><a></a></td>
                         <td class="table-lead"></td>
                         <td class="table-bckcheck"></td>
                         <td class="table-ages"></td>
                     </tr>
-
+                    </table>
         <!-- Pre-Populated DOM -->
         <div class="ui modal" id="all-volunteers">
             <i class="close icon"></i>
@@ -130,8 +120,13 @@
             </div>
 
             <!-- Monthly Schedule -->
+                    <!-- MODAL FOR SUBSTITUTES -->
+                    <div class="ui modal" id="find-sub">
+                        
+                    </div>
+
             <div  id="schedule">
-                <div class="ui huge header centered" id="month"></div>
+                <div class="ui huge header centered" id="month">March</div>
                 <div class="ui divider"></div>
                 <div class="ui styled fluid accordion scheduled-date">
 
@@ -140,44 +135,80 @@
                         <h2>Schedule</h2>
                         <div class="ui three column grid">
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="inf">Infants</b>
-                                    <ul>
-                                        <li>Court Rich</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="inf">Infants</b>
+                                    <ul class="ui list">
+                                        <a class="item pop-vol pop-vol">Court Rich</a>
+                                        <div class="ui popup">
+                                            <div class="header">Sub needed?</div>
+                                            <div class="ui right labeled icon positive button">
+                                                <i class="right arrow icon"></i>Yes
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="18mo">12-18month</b>
-                                    <ul>
-                                        <li>Maggie Smith</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="18mo">12-18month</b>
+                                    <ul class="ui list">
+                                        <a class="item pop-vol">Maggie Smith</a>
+                                        <div class="ui popup">
+                                            <div class="header">Sub needed?</div>
+                                            <div class="ui right labeled icon positive button">
+                                                <i class="right arrow icon"></i>Yes
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="24mo">18-24month</b>
-                                    <ul>
-                                        <li>Peggie Sue</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="24mo">18-24month</b>
+                                    <ul class="ui list">
+                                        <a class="item pop-vol">Peggie Sue</a>
+                                        <div class="ui popup">
+                                            <div class="header">Sub needed?</div>
+                                            <div class="ui right labeled icon positive button">
+                                                <i class="right arrow icon"></i>Yes
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="3yr">2-3yr</b>
-                                    <ul>
-                                        <li>Grissella Grimm</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="3yr">2-3yr</b>
+                                    <ul class="ui list">
+                                        <a class="item pop-vol">Grissella Grimm</a>
+                                        <div class="ui popup">
+                                            <div class="header">Sub needed?</div>
+                                            <div class="ui right labeled icon positive button">
+                                                <i class="right arrow icon"></i>Yes
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="4yr">3-4yr</b>
-                                    <ul>
-                                        <li>Eleanor Rigby</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="4yr">3-4yr</b>
+                                    <ul class="ui list">
+                                        <a class="item pop-vol">Eleanor Rigby</a>
+                                        <div class="ui popup">
+                                            <div class="header">Sub needed?</div>
+                                            <div class="ui right labeled icon positive button">
+                                                <i class="right arrow icon"></i>Yes
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="5yr">4-5yr</b>
-                                    <ul>
-                                        <li>Alice Carrol</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="5yr">4-5yr</b>
+                                    <ul class="ui list">
+                                        <a class="item pop-vol">Alice Carrol</a>
+                                        <div class="ui popup">
+                                            <div class="header">Sub needed?</div>
+                                            <div class="ui right labeled icon positive button">
+                                                <i class="right arrow icon"></i>Yes
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
@@ -189,140 +220,142 @@
                         <h2>Schedule</h2>
                         <div class="ui three column grid">
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="inf">Infants</b>
-                                    <ul>
-                                        <li>Court Rich</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="inf">Infants</b>
+                                    <ul class="ui list">
+                                        <a class="item">Court Rich</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="18mo">12-18month</b>
-                                    <ul>
-                                        <li>Maggie Smith</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="18mo">12-18month</b>
+                                    <ul class="ui list">
+                                        <a class="item">Maggie Smith</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="24mo">18-24month</b>
-                                    <ul>
-                                        <li>Peggie Sue</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="24mo">18-24month</b>
+                                    <ul class="ui list">
+                                        <a class="item">Peggie Sue</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="3yr">2-3yr</b>
-                                    <ul>
-                                        <li>Grissella Grimm</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="3yr">2-3yr</b>
+                                    <ul class="ui list">
+                                        <a class="item">Grissella Grimm</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="4yr">3-4yr</b>
-                                    <ul>
-                                        <li>Eleanor Rigby</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="4yr">3-4yr</b>
+                                    <ul class="ui list">
+                                        <a class="item">Eleanor Rigby</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="5yr">4-5yr</b>
-                                    <ul>
-                                        <li>Alice Carrol</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="5yr">4-5yr</b>
+                                    <ul class="ui list">
+                                        <a class="item">Alice Carrol</a>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <h3 class="title">March 19 <i class="dropdown icon"></i></h3>
                     <div class="content">
                         <h2>Schedule</h2>
                         <div class="ui three column grid">
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="inf">Infants</b>
-                                    <ul>
-                                        <li>Court Rich</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="inf">Infants</b>
+                                    <ul class="ui list">
+                                        <a class="item">Court Rich</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="18mo">12-18month</b>
-                                    <ul>
-                                        <li>Maggie Smith</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="18mo">12-18month</b>
+                                    <ul class="ui list">
+                                        <a class="item">Maggie Smith</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="24mo">18-24month</b>
-                                    <ul>
-                                        <li>Peggie Sue</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="24mo">18-24month</b>
+                                    <ul class="ui list">
+                                        <a class="item">Peggie Sue</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="3yr">2-3yr</b>
-                                    <ul>
-                                        <li>Grissella Grimm</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="3yr">2-3yr</b>
+                                    <ul class="ui list">
+                                        <a class="item">Grissella Grimm</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="4yr">3-4yr</b>
-                                    <ul>
-                                        <li>Eleanor Rigby</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="4yr">3-4yr</b>
+                                    <ul class="ui list">
+                                        <a class="item">Eleanor Rigby</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="5yr">4-5yr</b>
-                                    <ul>
-                                        <li>Alice Carrol</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="5yr">4-5yr</b>
+                                    <ul class="ui list">
+                                        <a class="item">Alice Carrol</a>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <h3 class="title">March 26 <i class="dropdown icon"></i></h3>
                     <div class="content">
                         <h2>Schedule</h2>
                         <div class="ui three column grid">
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="inf">Infants</b>
-                                    <ul>
-                                        <li>Court Rich</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="inf">Infants</b>
+                                    <ul class="ui list">
+                                        <a class="item">Court Rich</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="18mo">12-18month</b>
-                                    <ul>
-                                        <li>Maggie Smith</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="18mo">12-18month</b>
+                                    <ul class="ui list">
+                                        <a class="item">Maggie Smith</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="24mo">18-24month</b>
-                                    <ul>
-                                        <li>Peggie Sue</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="24mo">18-24month</b>
+                                    <ul class="ui list">
+                                        <a class="item">Peggie Sue</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="3yr">2-3yr</b>
-                                    <ul>
-                                        <li>Grissella Grimm</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="3yr">2-3yr</b>
+                                    <ul class="ui list">
+                                        <a class="item">Grissella Grimm</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="4yr">3-4yr</b>
-                                    <ul>
-                                        <li>Eleanor Rigby</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="4yr">3-4yr</b>
+                                    <ul class="ui list">
+                                        <a class="item">Eleanor Rigby</a>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="ui segment"><b class="ui top attached label" id="5yr">4-5yr</b>
-                                    <ul>
-                                        <li>Alice Carrol</li>
+                                <div class="ui segment"><b class="ui top attached label scheduled-ages" id="5yr">4-5yr</b>
+                                    <ul class="ui list">
+                                        <a class="item">Alice Carrol</a>
                                     </ul>
                                 </div>
                             </div>
@@ -337,7 +370,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
         <script src="node_modules/semantic-ui/dist/semantic.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-        <script src="main.js"></script>
+        <script src="scripts/main.js"></script>
 
   </body>
 </html>
