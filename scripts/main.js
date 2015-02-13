@@ -182,17 +182,17 @@ var findSub = function(age){
 var ageArray = ['infants', '12-18month', '18-24month', '2-3yrs', '3-4yrs', '4-5yrs'];
 // Create Demo Volunteer List
 // Infants, 12-18 month, 18-24month, 2-3yrs, 3-4yrs, 4-5yrs
-new Volunteer('Arabella', 'Fig', '123-456-7890', 'Matilda@email.com', ['infants'], 'no', 'yes');
+new Volunteer('Arabella', 'Fig', '123-456-7890', 'arabella@email.com', ['infants'], 'no', 'yes');
 new Volunteer('Court', 'Rich', '123-456-7890', 'court@email.com', ['infants'], 'yes', 'yes');
-new Volunteer('Perenelle', 'Flamel', '123-456-7890', 'Leia@email.com', ['12-18month'], 'yes', 'yes');
+new Volunteer('Perenelle', 'Flamel', '123-456-7890', 'perenelle@email.com', ['12-18month'], 'yes', 'yes');
 new Volunteer('Maggie', 'Smith', '123-456-7890', 'Maggie@email.com', ['12-18month'], 'no', 'yes');
-new Volunteer('Hepzibah', 'Smith', '123-456-7890', 'lisa@email.com', ['18-24month'], 'no', 'yes');
-new Volunteer('Emmeline', 'Vance', '123-456-7890', 'peggy@email.com', ['18-24month'], 'yes', 'yes');
-new Volunteer('Romilda', 'Vane', '123-456-7890', 'Clarabelle@email.com', ['2-3yrs'], 'no', 'yes');
-new Volunteer('Andromeda', 'Tonks', '123-456-7890', 'Grissella@email.com', ['2-3yrs'], 'yes', 'yes');
+new Volunteer('Hepzibah', 'Smith', '123-456-7890', 'hepzibah@email.com', ['18-24month'], 'no', 'yes');
+new Volunteer('Emmeline', 'Vance', '123-456-7890', 'emmeline@email.com', ['18-24month'], 'yes', 'yes');
+new Volunteer('Romilda', 'Vane', '123-456-7890', 'romilda@email.com', ['2-3yrs'], 'no', 'yes');
+new Volunteer('Andromeda', 'Tonks', '123-456-7890', 'andromeda@email.com', ['2-3yrs'], 'yes', 'yes');
 new Volunteer('Eleanor', 'Rigby', '123-456-7890', 'Eleanor@email.com', ['3-4yrs'], 'no', 'yes');
 new Volunteer('Lizzy', 'Bennet', '123-456-7890', 'Lizzy@email.com', ['3-4yrs'], 'yes', 'yes');
-new Volunteer('Mafalda', 'Hopkirk', '123-456-7890', 'Maude@email.com', ['4-5yrs'], 'no', 'yes');
+new Volunteer('Mafalda', 'Hopkirk', '123-456-7890', 'mafalda@email.com', ['4-5yrs'], 'no', 'yes');
 new Volunteer('Alice', 'Carrol', '123-456-7890', 'Alice@email.com', ['4-5yrs'], 'yes', 'yes');
 
 // Create Demo Substitute List
@@ -203,10 +203,10 @@ new Sub('Batilda', 'Bagshot', '123-456-7890', 'bathilda@email.com', ['12-18month
 
 // Create Demo Dates
 // 
-new ScheduledDate('March', 5, 2015, 'Court Rich', 'Maggie Smith', 'Peggy Sue', 'Grissella Grimm', 'Eleanor Rigby', 'Alice Carrol');
-new ScheduledDate('March', 12, 2015, 'Court Rich', 'Maggie Smith', 'Peggy Sue', 'Grissella Grimm', 'Eleanor Rigby', 'Alice Carrol');
-new ScheduledDate('March', 19, 2015, 'Court Rich', 'Maggie Smith', 'Peggy Sue', 'Grissella Grimm', 'Eleanor Rigby', 'Alice Carrol');
-new ScheduledDate('March', 26, 2015, 'Court Rich', 'Maggie Smith', 'Peggy Sue', 'Grissella Grimm', 'Eleanor Rigby', 'Alice Carrol');
+new ScheduledDate('March', 5, 2015, 'Court Rich', 'Perenelle Flamel', 'Emmeline Vance', 'Romilda Vane', 'Eleanor Rigby', 'Mafalda Hopkirk');
+new ScheduledDate('March', 12, 2015, 'Court Rich', 'Perenelle Flamel', 'Emmeline Vance', 'Romilda Vane', 'Eleanor Rigby', 'Mafalda Hopkirk');
+new ScheduledDate('March', 19, 2015, 'Court Rich', 'Perenelle Flamel', 'Emmeline Vance', 'Romilda Vane', 'Eleanor Rigby', 'Mafalda Hopkirk');
+new ScheduledDate('March', 26, 2015, 'Court Rich', 'Perenelle Flamel', 'Emmeline Vance', 'Romilda Vane', 'Eleanor Rigby', 'Mafalda Hopkirk');
 
 
 $(document).on('ready', function() {
