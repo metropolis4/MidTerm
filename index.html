@@ -30,7 +30,7 @@
             <form class='ui form'>
                 <div class="three wide field">
                     <label>Date</label>
-                    <input type="date">
+                    <input type="date" id="add-new-date">
                 </div>
             
                 <div class="ui three column grid" id="pick-volunteers">
@@ -39,8 +39,8 @@
             </form>
         </div>
         <div class="actions">
-            <div class="ui large positive animated button">
-                <div class="visible content" id="submit-new-sch">Submit</div> 
+            <div class="ui large positive animated button" id="submit-new-sch">
+                <div class="visible content">Submit</div> 
                 <div class="hidden content"><i class="checkmark icon"></i></div>
             </div>
         </div>
@@ -250,7 +250,7 @@
     <!-- Monthly Schedule -->
 
         <div  id="schedule">
-            <div class="ui huge header centered" id="month">Month</div>
+            <div class="ui huge header centered" id="month">March</div>
             <div class="ui divider"></div>
             <div class="ui styled fluid accordion">
                 <div class="scheduled-date hiding">
