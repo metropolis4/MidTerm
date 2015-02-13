@@ -3,7 +3,7 @@
 Functionality:
   ✔ Include a list of all dates as an accordion @done (15-02-11 15:33)
   ✔ User can click on any date to show a list of all volunteers scheduled for that date grouped by classroom/age group @done (15-02-12 08:41)
-  ☐ If a substitute is needed, click on the person a sub is needed for and a list of possible substitutes will populate in a modal
+  ✔ If a substitute is needed, click on the person a sub is needed for and a list of possible substitutes will populate in a modal @done (15-02-12 10:53)
   ☐ Display contact information and link to automate email to either a specific person, or to all people who teach that group
   ☐ Create a new schedule for future dates
 

@@ -33,22 +33,41 @@ Sub.volunteers = [];
 
 // Dates
 // 
-var ScheduleItem = function(date){
-    this.date = date;
+var ScheduledDate = function(month, day, year, inf, m1218, m1824, yr23, yr34, yr45){
+    this.month = month;
+    this.day = day;
+    this.year = year;
+    this.volunteers = 
+        {
+            inf   : [ 'infants', inf ],
+            m1218 : [ '12-18month', m1218 ],
+            m1824 : [ '18-24month', m1824 ],
+            yr23  : [ '2-3yrs', yr23 ],
+            yr34  : [ '3-4yrs', yr34 ],
+            yr45  : [ '4-5yrs', yr45 ]
+        };
+    ScheduledDate.dates.push(this);
 };
-
-ScheduleItem.prototype.newSch = function(){
-    
-};
+ScheduledDate.dates = [];
 
 // Helper Functions
 // 
-var willTeach = function(array, ageGroup) {
-    var matches =  _.filter(array, function(val) {
-        return _.contains(val.ages, ageGroup);
-    });
-    return _.map(matches, function(volunteer){
-        return volunteer.fullName;
+var populateNewDates = function(){
+    return  _.map(ScheduledDate.dates, function(val){
+        var $el = $('.scheduled-date').first().clone();
+        $el.removeClass('hiding');
+        $el.find('.title-month').text(val.month + ' / ');
+        $el.find('.title-day').text(val.day + ' / ');
+        $el.find('.title-year').text(val.year);
+
+        _.map(_.values(val.volunteers), function(val){
+            var $el2 = $('.scheduled-date-content').first().clone();
+            $el2.removeClass('hiding').attr('id', '');
+            $el2.find('.scheduled-ages').first().text(val[0]);
+            $el2.find('.pop-vol').first().text(val[1]);
+            return $el.find('.appended-schedule').append($el2);
+        });
+        return $el;
     });
 };
 
@@ -112,6 +131,7 @@ var findSub = function(age){
     });
 };
 
+var ageArray = ['infants', '12-18month', '18-24month', '2-3yrs', '3-4yrs', '4-5yrs'];
 // Create Demo Volunteer List
 // Infants, 12-18 month, 18-24month, 2-3yrs, 3-4yrs, 4-5yrs
 var matilda = new Volunteer('Matilda', 'Rich', '123-456-7890', 'Matilda@email.com', ['infants'], 'no', 'yes');
@@ -133,10 +153,22 @@ var miss = new Sub('Miss', 'Molly', '123-456-7890', 'miss@email.com', ['4-5yrs',
 var rosey = new Sub('Rosey', 'Cotton', '123-456-7890', 'rosey@mail.com', ['18-24month', 'infants','12-18month'], 'no', 'yes');
 var bathilda = new Sub('Batilda', 'Bagshot', '123-456-7890', 'bathilda@email.com', ['12-18month', '4-5yrs'], 'no', 'yes');
 
+// Create Demo Dates
+// 
+var march5 = new ScheduledDate('March', 5, 2015, 'Court Rich', 'Maggie Smith', 'Peggy Sue', 'Grissella Grimm', 'Eleanor Rigby', 'Alice Carrol');
+var march12 = new ScheduledDate('March', 12, 2015, 'Court Rich', 'Maggie Smith', 'Peggy Sue', 'Grissella Grimm', 'Eleanor Rigby', 'Alice Carrol');
+var march19 = new ScheduledDate('March', 19, 2015, 'Court Rich', 'Maggie Smith', 'Peggy Sue', 'Grissella Grimm', 'Eleanor Rigby', 'Alice Carrol');
+var march26 = new ScheduledDate('March', 26, 2015, 'Court Rich', 'Maggie Smith', 'Peggy Sue', 'Grissella Grimm', 'Eleanor Rigby', 'Alice Carrol');
+
+
 $(document).on('ready', function() {
 
+    $('#schedule').find('.accordion').append(populateNewDates());
+
     // Semantic UI Elements
-    $('.ui.accordion').accordion();
+    $('.ui.accordion').accordion({
+        animateChildren: false
+    });
     $('.ui.dropdown').dropdown();
     $('.ui.checkbox').checkbox();
     $('.pop-vol').popup({
@@ -167,16 +199,71 @@ $(document).on('ready', function() {
 
     $('#main-menu').on('click', '#newV', function(){
         $('.age-classes-vol').empty();
+        $('.ui.checkbox').checkbox('uncheck');
         $('.age-classes-vol').append(populateAges());
         $('.ui.checkbox').checkbox();
         $('#new-volunteer').modal('setting', 'transition', 'horizontal flip').modal('show');
+        $('#submit-new-vol').one('click', function(){
+            var fName = $("#first-name").val();
+                $('#first-name').val('');
+            var lName = $('#last-name').val();
+                $('#last-name').val('');
+            var phNum = $('#phone').val();
+                $('#phone').val('');
+            var eMail = $('#email').val();
+                $('#email').val('');
+            var isLead = $('#lead').checkbox('is checked');
+                if(isLead) {isLead = "yes"} else{isLead = "no"};
+            var bckCheck = $('#background-check').checkbox('is checked');
+                if(bckCheck){bckCheck = 'yes'} else{bckCheck = 'no'};
+                console.log(isLead);
+            var ageRange = $('.age-classes-vol').find('.ui.checkbox').checkbox('is checked');
+            var newVolAges = _.map(_.zip(ageRange, ageArray), function(val){
+                if(val[0] === true) { return val[1] }
+            });
+            newVolAges = _.compact(newVolAges);
+            new Volunteer(fName, lName, phNum, eMail, newVolAges, isLead, bckCheck);
+        });
     });
 
     $('#main-menu').on('click', '#newS', function(){
         $('.age-classes-sub').empty();
+        $('.ui.checkbox').checkbox('uncheck');
         $('.age-classes-sub').append(populateAges());
         $('.ui.checkbox').checkbox();
         $('#new-substitute').modal('setting', 'transition', 'horizontal flip').modal('show');
+        $('#submit-new-sub').one('click', function(){
+            var subFirstName = $('.first-name').val();
+                $('.first-name').val('');
+            var subLastName = $('.last-name').val();
+                $('.last-name').val('');
+            var subPhone = $('.phone').val();
+                $('.phone').val('');
+            var subEmail = $('.email').val();
+                $('.email').val('');
+            var subIsLead = $('.is-lead').checkbox('is checked');
+                if(subIsLead) {subIsLead = 'yes'} else{subIsLead = 'no'};
+            var subBckCheck = $('.is-bckcheck').checkbox('is checked');
+                if(subBckCheck) {subBckCheck = 'yes'} else{subBckCheck = 'no'};
+            var ageRange = $('.age-classes-sub').find('.ui.checkbox').checkbox('is checked');
+            var newSubAges = _.map(_.zip(ageRange, ageArray), function(val){
+                if(val[0] === true) { return val[1] }
+            });
+            newSubAges = _.compact(newSubAges);
+            new Sub(subFirstName, subLastName, subPhone, subEmail, newSubAges, subIsLead, subBckCheck);
+        });
+    });
+
+    $('.month-list').on('click', '.item', function(){
+        var thisMonth = $(this).text();
+        $('#month').text(thisMonth);
+        console.log('month: ' + month + ' thisMonth: ' + thisMonth);
+        if(month === thisMonth) {
+            $('.scheduled-date').removeClass('hiding');
+        }
+        else{
+            // $('.scheduled-date').addClass('hiding');
+        }
     });
 
     $('#schedule').on('click', '.sub-needed', function(){

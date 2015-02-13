@@ -33,3 +33,6 @@ div b {
 .table-email a {
     cursor: pointer;
 }
+#scheduled-date-content-template {
+    display: none;
+}
